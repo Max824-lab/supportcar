@@ -765,3 +765,9 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 .statb__txt{display:flex;flex-direction:column;line-height:1.25;font-size:.95rem}
 .statb__txt small{color:var(--grey);font-size:.8rem}
 @media (max-width:600px){.proofs{margin-top:1.4rem;gap:.55rem}.proofs>*{flex:1 1 100%}.statb{justify-content:flex-start}}
+/* Compteur sans encadré : directement sur la photo */
+.statb{background:none;box-shadow:none;padding:.2rem 0 .2rem .4rem;color:#fff}
+.statb__num{color:#fff;font-size:1.9rem}
+.statb__txt b{color:#fff}
+.statb__txt small{color:rgba(255,255,255,.7)}
+@media (max-width:600px){.proofs>.statb{flex:0 1 auto;padding-left:.2rem}}
