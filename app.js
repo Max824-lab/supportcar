@@ -272,32 +272,48 @@ Précisions : ${g('message')}`;
     o.observe(el);
   });
 
-  /* ---------- En 3 étapes : le tracé descend au rythme du défilement ---------- */
+  /* ---------- En 3 étapes : animation unique, lancée à l'arrivée sur la section ---------- */
   const tl = $('#timeline');
   if (tl) {
     const steps = $$('.tl__step', tl), dots = $$('.tl__dot', tl), tr = $('.tl__track', tl), fill = $('.tl__fill', tl);
-    let y0 = 0, y1 = 0;
+    let y0 = 0, y1 = 0, prog = 0, started = false;
     const fit = () => {
       if (dots.length < 2) return;
       const base = tl.getBoundingClientRect().top, a = dots[0].getBoundingClientRect(), z = dots[dots.length - 1].getBoundingClientRect();
       y0 = a.top + a.height / 2 - base; y1 = z.top + z.height / 2 - base;
       tr.style.top = y0 + 'px'; tr.style.bottom = 'auto'; tr.style.height = (y1 - y0) + 'px';
+      paint();
     };
-    const update = () => {
-      const base = tl.getBoundingClientRect().top, mark = innerHeight * .62;   // repère à ~60 % de l'écran
-      const p = reduce ? 1 : Math.min(1, Math.max(0, (mark - (base + y0)) / Math.max(1, y1 - y0)));
-      fill.style.transform = `scaleY(${p})`;
+    const paint = () => {
+      fill.style.transform = `scaleY(${prog})`;
+      if (!started) return;
+      const base = tl.getBoundingClientRect().top, lineY = base + y0 + prog * (y1 - y0);
       steps.forEach((st, k) => {
         const d = dots[k].getBoundingClientRect();
-        st.classList.toggle('is-on', reduce || d.top + d.height / 2 <= mark + 4);
+        if (d.top + d.height / 2 <= lineY + 2) st.classList.add('is-on');   // une fois allumée, une étape reste allumée
       });
     };
-    fit(); update();
-    addEventListener('scroll', update, { passive: true });
-    addEventListener('resize', () => { fit(); update(); });
-    addEventListener('load', () => { fit(); update(); });
-    if (window.ResizeObserver) new ResizeObserver(() => { fit(); update(); }).observe(tl);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { fit(); update(); });
+    const play = () => {
+      if (started) return; started = true;
+      if (reduce) { prog = 1; paint(); return; }
+      steps[0].classList.add('is-on');
+      const t0 = performance.now() + 250, D = 1300;
+      const tick = now => {
+        const t = Math.min(1, Math.max(0, (now - t0) / D));
+        prog = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;   // accélère puis ralentit
+        paint();
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    // lancement quand le rond de l'étape 1 arrive au premier tiers bas de l'écran
+    const o = new IntersectionObserver(([en]) => { if (en.isIntersecting) { play(); o.disconnect(); } }, { rootMargin: '0px 0px -25% 0px' });
+    o.observe(dots[0]);
+    fit();
+    addEventListener('resize', fit);
+    addEventListener('load', fit);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(tl);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   }
 
   /* ---------- Bannière + barre mobile ---------- */
