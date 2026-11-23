@@ -820,3 +820,5 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 .tl__dot{transition:background .3s,box-shadow .3s,transform .4s var(--ease)}
 /* Alternance : avant/après image à droite (ordinateur) */
 @media (min-width:961px){.res{grid-template-columns:1fr minmax(0,480px);grid-template-areas:"head media" "text media"}}
+
+.res__text .lead{margin-bottom:2rem}
