@@ -744,3 +744,7 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 .toast button{grid-column:2;grid-row:1/3;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff}
 
 .footer__legal a{white-space:nowrap}
+/* La zone du bouton « Nous contacter » ne doit pas bloquer les clics quand le panneau est fermé */
+.contact{pointer-events:none}
+.contact-fab{pointer-events:auto}
+.contact.open .contact__panel{pointer-events:auto}
