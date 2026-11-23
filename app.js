@@ -31,15 +31,6 @@ const CONFIG = {
     if (alt) alt.insertAdjacentHTML('afterbegin', `<a href="${esc(CONFIG.BOOKING_URL)}" target="_blank" rel="noopener" class="btn btn--blue">📅 Réserver en ligne</a>`);
   }
 
-  /* ---------- Réservation Klinter : message de secours si le module ne s'affiche pas ---------- */
-  const kw = $('[data-kltr-widget="booking"]'), fb = $('#bookingFallback');
-  if (kw && fb) {
-    const check = () => { const ok = kw.children.length > 0 || kw.shadowRoot || kw.offsetHeight > 40; fb.hidden = !!ok; return ok; };
-    const o = new IntersectionObserver(([e]) => { if (!e.isIntersecting) return; o.disconnect(); setTimeout(check, 6000); });
-    o.observe(kw);
-    new MutationObserver(check).observe(kw, { childList: true, subtree: true });
-  }
-
   /* ---------- Onde au clic sur les boutons ---------- */
   if (!reduce) document.addEventListener('pointerdown', e => {
     const el = e.target.closest('.btn, .bar__cta, .bar__btn, .choice, .contact-fab, .helper, .gbadge, a.hs');

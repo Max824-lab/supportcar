@@ -769,3 +769,6 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 .statb__num{color:var(--ink)}
 /* « Découvrez chaque zone nettoyée » plus grand sur téléphone */
 @media (max-width:600px){.seg__hint{font-size:1.4rem;letter-spacing:-.03em;margin-bottom:.9rem}}
+
+/* Réservation : un seul bloc, celui du module Klinter (pas de cadre autour) */
+.booking__frame{background:none;box-shadow:none;border-radius:0;min-height:0;overflow:visible;padding:0;max-width:960px}
