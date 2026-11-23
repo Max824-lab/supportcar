@@ -272,6 +272,20 @@ Précisions : ${g('message')}`;
     o.observe(el);
   });
 
+  /* ---------- En 3 étapes : apparition une par une + tracé ---------- */
+  const tl = $('#timeline');
+  if (tl) {
+    const to = new IntersectionObserver(([e]) => { if (e.isIntersecting) { tl.classList.add('in'); to.disconnect(); } }, { threshold: .3 });
+    to.observe(tl);
+    // le tracé va exactement du rond 1 au rond 3
+    const fit = () => {
+      const dots = $$('.tl__dot', tl), tr = $('.tl__track', tl); if (dots.length < 2) return;
+      const base = tl.getBoundingClientRect().top, a = dots[0].getBoundingClientRect(), z = dots[dots.length - 1].getBoundingClientRect();
+      tr.style.top = (a.top + a.height / 2 - base) + 'px'; tr.style.bottom = 'auto'; tr.style.height = (z.top - a.top) + 'px';
+    };
+    fit(); addEventListener('resize', fit); addEventListener('load', fit);
+  }
+
   /* ---------- Bannière + barre mobile ---------- */
   const nav = $('#nav'), bar = $('.bar');
   const onScroll = () => {
