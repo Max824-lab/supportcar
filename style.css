@@ -837,3 +837,13 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
   .ms__media .schema{max-width:none}
   .ms__media .schema img,.schema[data-pane="int"] img,#schema img{width:100%;height:calc(100vh - 140px);max-height:760px;aspect-ratio:auto;object-fit:cover;object-position:50% 45%}
 }
+
+/* Nettoyage : titre intégré à la photo */
+#schema{position:relative;overflow:hidden;border-radius:var(--r)}
+#schema::after{content:"";position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.45) 45%,transparent);pointer-events:none;border-radius:0 0 var(--r) var(--r)}
+.schema__title{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:2rem 2rem 2.2rem;color:#fff}
+.schema__title .eyebrow{color:#fff;opacity:.75;margin-bottom:.6rem}
+.schema__title h2{color:#fff;font-size:clamp(2rem,3.4vw,3rem);line-height:1.02;letter-spacing:-.045em}
+@media (min-width:961px){.ms__grid{align-items:center}.ms__media{position:relative;top:auto}}
+@media (max-width:960px){.schema__title{padding:1.4rem 1.4rem 1.6rem}.schema__title h2{font-size:2rem}#schema img{max-height:70vh;width:100%;object-fit:cover}}
+@media (min-width:961px){#schema img,.ms__media .schema img{height:min(640px,calc(100vh - 190px))!important;max-height:none}}
