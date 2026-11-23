@@ -58,7 +58,7 @@ const CONFIG = {
     const im = new Image();
     im.onload = () => {
       extPane.classList.add('has-photo');
-      extPane.innerHTML = '<img src="assets/exterieur.jpg" alt="Extérieur après nettoyage : les zones traitées sont indiquées" width="' + im.naturalWidth + '" height="' + im.naturalHeight + '">' +
+      extPane.innerHTML = '<span class="schema__cap"><b>Formule intérieur + extérieur</b><small>Zones nettoyées</small></span><img src="assets/exterieur.jpg" alt="Extérieur après nettoyage : les zones traitées sont indiquées" width="' + im.naturalWidth + '" height="' + im.naturalHeight + '">' +
         EXT_HOTS.map(([n, lab, x, y, side]) => `<button type="button" class="hot hot--${side}" style="--x:${x}%;--y:${y}%" data-hot="${n}" aria-label="${lab}"><i></i><span>${lab}</span></button>`).join('');
       initSchema(extPane); bindHots();
     };
@@ -76,25 +76,18 @@ const CONFIG = {
     });
   };
   bindHots();
-  const sw = $('#iosSwitch');
-  if (sw) {
-    const tog = $('.ios__sw', sw);
-    const setPane = k => {
-      tog.setAttribute('aria-checked', k === 'ext');
-      $$('.offer[data-offer]').forEach(o => { const on = o.dataset.offer === k; o.classList.toggle('is-on', on); o.setAttribute('aria-checked', on); });
-      const cta = $('#offerCta'); if (cta) cta.textContent = k === 'ext' ? 'Réserver le nettoyage complet' : 'Réserver le nettoyage intérieur';
-      $$('.ios__lbl', sw).forEach(l => l.classList.toggle('is-on', l.dataset.seg === k));
-      $$('[data-pane]').forEach(p => {
-        const show = p.dataset.pane === k;
-        if (p.hidden === !show) return;
-        p.hidden = !show;
-        if (show) { p.classList.remove('pane-in'); void p.offsetWidth; p.classList.add('pane-in', 'in'); }
-      });
-    };
-    tog.addEventListener('click', () => setPane(tog.getAttribute('aria-checked') === 'true' ? 'int' : 'ext'));
-    $$('.ios__lbl', sw).forEach(l => l.addEventListener('click', () => setPane(l.dataset.seg)));
-    $$('.offer[data-offer]').forEach(o => o.addEventListener('click', () => setPane(o.dataset.offer)));
-  }
+  /* Formules : cliquer sur une formule change la photo, la liste et la description */
+  const setPane = k => {
+    $$('.offer[data-offer]').forEach(o => { const on = o.dataset.offer === k; o.classList.toggle('is-on', on); o.setAttribute('aria-checked', on); });
+    const cta = $('#offerCta'); if (cta) cta.textContent = k === 'ext' ? 'Réserver le nettoyage complet' : 'Réserver le nettoyage intérieur';
+    $$('[data-pane]').forEach(p => {
+      const show = p.dataset.pane === k;
+      if (p.hidden === !show) return;
+      p.hidden = !show;
+      if (show) { p.classList.remove('pane-in'); void p.offsetWidth; p.classList.add('pane-in', 'in'); }
+    });
+  };
+  $$('.offer[data-offer]').forEach(o => o.addEventListener('click', () => setPane(o.dataset.offer)));
 
   /* ---------- Services sur devis : déplié ---------- */
   $$('.card--svc').forEach(card => {

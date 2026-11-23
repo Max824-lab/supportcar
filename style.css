@@ -822,3 +822,10 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 @media (min-width:961px){.res{grid-template-columns:1fr minmax(0,480px);grid-template-areas:"head media" "text media"}}
 
 .res__text .lead{margin-bottom:2rem}
+
+/* Étiquette de la formule, posée sur la photo */
+.schema__cap{position:absolute;right:14px;bottom:14px;z-index:5;display:flex;flex-direction:column;align-items:flex-end;padding:.55rem .9rem;border-radius:14px;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);box-shadow:0 10px 24px -10px rgba(0,0,0,.45);line-height:1.2;pointer-events:none}
+.schema__cap b{font-size:.92rem;letter-spacing:-.02em;color:var(--ink)}
+.schema__cap small{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+@media (max-width:600px){.schema__cap{right:10px;bottom:10px;padding:.45rem .7rem}.schema__cap b{font-size:.8rem}.schema__cap small{font-size:.62rem}}
+@media (max-width:600px){.schema__cap{padding:.4rem .65rem;border-radius:12px}.schema__cap b{font-size:.74rem}.schema__cap small{display:none}}
