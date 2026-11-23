@@ -847,3 +847,5 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 @media (min-width:961px){.ms__grid{align-items:center}.ms__media{position:relative;top:auto}}
 @media (max-width:960px){.schema__title{padding:1.4rem 1.4rem 1.6rem}.schema__title h2{font-size:2rem}#schema img{max-height:70vh;width:100%;object-fit:cover}}
 @media (min-width:961px){#schema img,.ms__media .schema img{height:min(640px,calc(100vh - 190px))!important;max-height:none}}
+
+.schema__title .blue{color:#4f86ec}
