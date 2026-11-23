@@ -849,3 +849,14 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 @media (min-width:961px){#schema img,.ms__media .schema img{height:min(640px,calc(100vh - 190px))!important;max-height:none}}
 
 .schema__title .blue{color:#4f86ec}
+
+/* Avant / après : titre intégré à l'image */
+.ba__handle{z-index:2}
+.ba__shade{position:absolute;left:0;right:0;bottom:0;height:55%;z-index:3;pointer-events:none;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.4) 50%,transparent)}
+.ba__title{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:1.8rem 1.8rem 2rem;color:#fff;pointer-events:none}
+.ba__title .eyebrow{color:#fff;opacity:.75;margin-bottom:.55rem}
+.ba__title h2{color:#fff;font-size:clamp(1.9rem,3.2vw,2.8rem);line-height:1.02;letter-spacing:-.045em}
+.ba__range{z-index:6}
+.ba__tag{z-index:5}
+@media (min-width:961px){.res{grid-template-columns:1fr minmax(0,480px)!important;grid-template-areas:"text media"!important;align-items:center}.res__text{margin-top:0}}
+@media (max-width:960px){.res{grid-template-areas:"media" "text"!important}.ba__title{padding:1.3rem 1.3rem 1.5rem}.ba__title h2{font-size:1.9rem}}
