@@ -829,3 +829,11 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 .schema__cap small{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
 @media (max-width:600px){.schema__cap{right:10px;bottom:10px;padding:.45rem .7rem}.schema__cap b{font-size:.8rem}.schema__cap small{font-size:.62rem}}
 @media (max-width:600px){.schema__cap{padding:.4rem .65rem;border-radius:12px}.schema__cap b{font-size:.74rem}.schema__cap small{display:none}}
+
+/* Nettoyage : photo alignée en haut du texte et qui reste visible pendant la lecture (ordinateur) */
+@media (min-width:961px){
+  .ms__grid{align-items:start}
+  .ms__media{position:sticky;top:96px;align-items:stretch}
+  .ms__media .schema{max-width:none}
+  .ms__media .schema img,.schema[data-pane="int"] img,#schema img{width:100%;height:calc(100vh - 140px);max-height:760px;aspect-ratio:auto;object-fit:cover;object-position:50% 45%}
+}
