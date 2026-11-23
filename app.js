@@ -267,6 +267,20 @@ Précisions : ${g('message')}`;
   };
   addEventListener('scroll', markNav, { passive: true }); markNav();
 
+  /* ---------- Compteur « + de 500 véhicules nettoyés » ---------- */
+  $$('.countup').forEach(el => {
+    const to = +el.dataset.to;
+    if (reduce) { el.textContent = to; return; }
+    el.textContent = '0';
+    const o = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return; o.disconnect();
+      const t0 = performance.now(), d = 1800;
+      const step = now => { const p = Math.min(1, (now - t0) / d); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+      setTimeout(() => requestAnimationFrame(step), 450);
+    }, { threshold: .5 });
+    o.observe(el);
+  });
+
   /* ---------- Bannière + barre mobile ---------- */
   const nav = $('#nav'), bar = $('.bar');
   const onScroll = () => {
