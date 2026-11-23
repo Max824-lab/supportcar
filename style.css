@@ -818,3 +818,5 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 .tl .tl__step.is-on .tl__card{opacity:1;transform:none}
 .tl__card{transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .tl__dot{transition:background .3s,box-shadow .3s,transform .4s var(--ease)}
+/* Alternance : avant/après image à droite (ordinateur) */
+@media (min-width:961px){.res{grid-template-columns:1fr minmax(0,480px);grid-template-areas:"head media" "text media"}}
