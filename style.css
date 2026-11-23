@@ -805,3 +805,16 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
   .tl__card h4{font-size:1.18rem}
 }
 @media (prefers-reduced-motion:reduce){.tl__fill{transform:none}.tl__card{opacity:1;transform:none}}
+
+/* En 3 étapes : pilotage au défilement (remplace l'animation minutée) */
+.tl__fill,.tl.in .tl__fill{transition:none;transform:scaleY(0)}
+.tl__dot,.tl__card,.tl__dot b{transition-delay:0s!important}
+.tl.in .tl__dot,.tl .tl__dot{background:#fff;box-shadow:inset 0 0 0 3px var(--line)}
+.tl.in .tl__dot b,.tl .tl__dot b{color:var(--grey)}
+.tl.in .tl__card,.tl .tl__card{opacity:0;transform:translateX(24px)}
+.tl .tl__step.is-on .tl__dot{background:#000;box-shadow:0 0 0 6px #fff,0 10px 24px -8px rgba(0,0,0,.4);transform:scale(1.05)}
+.tl .tl__step.is-on:last-child .tl__dot{background:var(--blue);box-shadow:0 0 0 6px #fff,0 0 0 12px rgba(48,111,219,.15),0 10px 24px -8px rgba(48,111,219,.6)}
+.tl .tl__step.is-on .tl__dot b{color:#fff}
+.tl .tl__step.is-on .tl__card{opacity:1;transform:none}
+.tl__card{transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.tl__dot{transition:background .3s,box-shadow .3s,transform .4s var(--ease)}

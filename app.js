@@ -272,18 +272,32 @@ Précisions : ${g('message')}`;
     o.observe(el);
   });
 
-  /* ---------- En 3 étapes : apparition une par une + tracé ---------- */
+  /* ---------- En 3 étapes : le tracé descend au rythme du défilement ---------- */
   const tl = $('#timeline');
   if (tl) {
-    const to = new IntersectionObserver(([e]) => { if (e.isIntersecting) { tl.classList.add('in'); to.disconnect(); } }, { threshold: .3 });
-    to.observe(tl);
-    // le tracé va exactement du rond 1 au rond 3
+    const steps = $$('.tl__step', tl), dots = $$('.tl__dot', tl), tr = $('.tl__track', tl), fill = $('.tl__fill', tl);
+    let y0 = 0, y1 = 0;
     const fit = () => {
-      const dots = $$('.tl__dot', tl), tr = $('.tl__track', tl); if (dots.length < 2) return;
+      if (dots.length < 2) return;
       const base = tl.getBoundingClientRect().top, a = dots[0].getBoundingClientRect(), z = dots[dots.length - 1].getBoundingClientRect();
-      tr.style.top = (a.top + a.height / 2 - base) + 'px'; tr.style.bottom = 'auto'; tr.style.height = (z.top - a.top) + 'px';
+      y0 = a.top + a.height / 2 - base; y1 = z.top + z.height / 2 - base;
+      tr.style.top = y0 + 'px'; tr.style.bottom = 'auto'; tr.style.height = (y1 - y0) + 'px';
     };
-    fit(); addEventListener('resize', fit); addEventListener('load', fit);
+    const update = () => {
+      const base = tl.getBoundingClientRect().top, mark = innerHeight * .62;   // repère à ~60 % de l'écran
+      const p = reduce ? 1 : Math.min(1, Math.max(0, (mark - (base + y0)) / Math.max(1, y1 - y0)));
+      fill.style.transform = `scaleY(${p})`;
+      steps.forEach((st, k) => {
+        const d = dots[k].getBoundingClientRect();
+        st.classList.toggle('is-on', reduce || d.top + d.height / 2 <= mark + 4);
+      });
+    };
+    fit(); update();
+    addEventListener('scroll', update, { passive: true });
+    addEventListener('resize', () => { fit(); update(); });
+    addEventListener('load', () => { fit(); update(); });
+    if (window.ResizeObserver) new ResizeObserver(() => { fit(); update(); }).observe(tl);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { fit(); update(); });
   }
 
   /* ---------- Bannière + barre mobile ---------- */
