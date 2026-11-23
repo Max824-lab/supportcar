@@ -748,3 +748,11 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 .contact{pointer-events:none}
 .contact-fab{pointer-events:auto}
 .contact.open .contact__panel{pointer-events:auto}
+
+/* Écrans tactiles : pas d'effets de survol (évite le « double toucher » sur iPhone) */
+@media (hover:none){
+  .btn:hover,.hs:hover,a.hs:hover,.helper:hover,.card:hover,.offer:hover,.contact-fab:hover,.gbadge:hover,.svc__toggle:hover{transform:none!important}
+  .btn:hover::after,.contact-fab:hover::after,.bar__cta:hover::after,.choice--main:hover::after{left:-75%;transition:none}
+  .hero__services--a.vA a.hs:hover{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+  .hero__services--a.vA a.hs:hover .hs__go{transform:none;background:rgba(255,255,255,.16);color:inherit}
+}
