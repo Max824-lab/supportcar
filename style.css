@@ -860,3 +860,6 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 .ba__tag{z-index:5}
 @media (min-width:961px){.res{grid-template-columns:1fr minmax(0,480px)!important;grid-template-areas:"text media"!important;align-items:center}.res__text{margin-top:0}}
 @media (max-width:960px){.res{grid-template-areas:"media" "text"!important}.ba__title{padding:1.3rem 1.3rem 1.5rem}.ba__title h2{font-size:1.9rem}}
+
+.offers__title{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;margin:0 0 .8rem}
+.ms__text .checks:first-child{margin-top:0}
