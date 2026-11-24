@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://supportcar.fr/">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=c26d8c8a3a">
+<link rel="stylesheet" href="style.css?v=83c4d85f65">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AutoWash","name":"Support Car","description":"Nettoyage automobile professionnel à domicile, polissage et traitement céramique en Vendée.","url":"https://supportcar.fr/","telephone":"+33768831448","email":"contact@supportcar.fr","image":"https://supportcar.fr/assets/og-image.jpg","areaServed":{"@type":"AdministrativeArea","name":"Vendée"},"priceRange":"€€","address":{"@type":"PostalAddress","addressRegion":"Vendée","addressCountry":"FR"}}
 </script>
@@ -114,31 +114,17 @@
       </div>
     </div>
     <div class="ms__text">
-      <ul class="checks checks--hot rv" id="schemaList" data-pane="int">
-        <li data-hot="1">Aspiration complète</li>
-        <li data-hot="2">Shampoing des sièges</li>
-        <li data-hot="3">Nettoyage des plastiques et cuirs</li>
-        <li data-hot="4">Contours de portières</li>
-        <li data-hot="5">Vitres intérieures</li>
-      </ul>
-      <ul class="checks checks--hot" data-pane="ext" hidden>
-        <li class="incl">Tout le nettoyage intérieur inclus</li>
-        <li data-hot="e1">Nettoyage des jantes</li>
-        <li data-hot="e2">Shampoing de la carrosserie</li>
-        <li data-hot="e3">Séchage avec finition brillante et hydrophobe</li>
-        <li data-hot="e4">Vitres extérieures</li>
-      </ul>
       <p class="offers__title rv">Choisissez votre formule</p>
       <div class="offers rv" role="radiogroup" aria-label="Choisir une formule">
-        <button type="button" class="offer is-on" role="radio" aria-checked="true" data-offer="int">
+        <div class="offer is-on" role="radio" tabindex="0" aria-checked="true" data-offer="int">
           <div class="offer__top"><b>Nettoyage intérieur</b><span class="price">Dès <b>149 €</b> <small>TTC</small></span></div>
-          <p>Aspiration, sièges, plastiques et cuirs, portières et vitres intérieures.</p>
-        </button>
-        <button type="button" class="offer offer--full" role="radio" aria-checked="false" data-offer="ext">
+          <ul class="checks offer__list"><li>Aspiration complète</li><li>Shampoing des sièges</li><li>Nettoyage des plastiques et cuirs</li><li>Contours de portières</li><li>Vitres intérieures</li></ul>
+        </div>
+        <div class="offer offer--full" role="radio" tabindex="0" aria-checked="false" data-offer="ext">
           <span class="offer__tag">Notre best-seller</span>
           <div class="offer__top"><b>Intérieur + extérieur</b><span class="price">Dès <b>189 €</b> <small>TTC</small></span></div>
-          <p>L’intérieur complet, plus les jantes, le shampoing de la carrosserie, les vitres extérieures et une finition brillante et hydrophobe.</p>
-        </button>
+          <ul class="checks offer__list"><li class="offer__plus">Tout le nettoyage intérieur, plus :</li><li>Nettoyage des jantes</li><li>Shampoing de la carrosserie</li><li>Séchage avec finition brillante et hydrophobe</li><li>Vitres extérieures</li></ul>
+        </div>
         <a href="#reservation" class="btn btn--blue btn--lg offers__cta" data-book id="offerCta">Réserver le nettoyage intérieur</a>
       </div>
     </div>
@@ -394,6 +380,6 @@
 <!-- Klinter : module de réservation (une seule fois par page) -->
 <script src="https://klinter.app/embed/v1.js" data-key="pub_ZqE1IOR21eBC3MUA-mBkJ5mO" async></script>
 <script src="reviews-backup.js?v=bab5b76415"></script>
-<script src="app.js?v=59c59af6fd"></script>
+<script src="app.js?v=19fb9a7c3b"></script>
 </body>
 </html>

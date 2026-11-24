@@ -863,3 +863,15 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 
 .offers__title{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;margin:0 0 .8rem}
 .ms__text .checks:first-child{margin-top:0}
+
+/* Formules : la liste de ce qui est inclus est dans chaque bloc */
+.offer{padding:1.3rem 1.4rem}
+.offer__list{margin:.9rem 0 0;gap:.5rem}
+.offer__list li{font-size:.93rem;font-weight:500;padding-left:1.75rem}
+.offer__list li::before{width:1.1em;height:1.1em;top:.18em}
+.offer__list li.offer__plus{padding-left:0;font-weight:700;color:var(--ink)}
+.offer__list li.offer__plus::before{display:none}
+.offer:not(.is-on) .offer__list li{color:var(--grey)}
+.offer:focus-visible{outline:3px solid rgba(48,111,219,.35);outline-offset:3px}
+.offers__title{margin-top:0}
+@media (max-width:600px){.offer__top{row-gap:.2rem}.offer__top .price{padding-left:calc(18px + .6rem)}}

@@ -88,6 +88,7 @@ const CONFIG = {
     });
   };
   $$('.offer[data-offer]').forEach(o => o.addEventListener('click', () => setPane(o.dataset.offer)));
+  $$('.offer[data-offer]').forEach(o => o.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setPane(o.dataset.offer); } }));
 
   /* ---------- Services sur devis : déplié ---------- */
   $$('.card--svc').forEach(card => {
