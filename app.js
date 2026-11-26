@@ -237,8 +237,6 @@ Précisions : ${g('message')}`;
   addEventListener('keydown', e => { if (e.key === 'Escape' && !Q.hidden) closeQuote(); });
   QF.addEventListener('change', e => { const b = e.target.closest('.err'); if (b) b.classList.remove('err'); });
   $$('[data-quote]').forEach(b => b.addEventListener('click', () => openQuote(b.dataset.quote)));
-  const dq = location.hash.match(/^#devis-(polissage-ceramique|ceramique)$/);
-  if (dq) { history.replaceState(null, '', location.pathname + '#prestations'); setTimeout(() => openQuote(dq[1]), 300); }
 
   /* ---------- Liens de la bannière ---------- */
   const navEl = $('#nav'), burger = $('#navBurger');
