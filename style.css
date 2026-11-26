@@ -875,3 +875,7 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 .offer:focus-visible{outline:3px solid rgba(48,111,219,.35);outline-offset:3px}
 .offers__title{margin-top:0}
 @media (max-width:600px){.offer__top{row-gap:.2rem}.offer__top .price{padding-left:calc(18px + .6rem)}}
+/* Photo d’accueil : Maxime au travail */
+.hero__media img{object-position:56% 50%}
+@media (min-width:961px){.hero__media img{object-position:12% 50%}}
+@media (max-width:960px){.hero__media img{object-position:36% 50%}.hero__media::after{background:rgba(0,0,0,.6)}}
