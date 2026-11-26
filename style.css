@@ -879,3 +879,5 @@ body.chat-open .chat-fab{opacity:0;pointer-events:none}
 .hero__media img{object-position:56% 50%}
 @media (min-width:961px){.hero__media img{object-position:12% 50%}}
 @media (max-width:960px){.hero__media img{object-position:36% 50%}.hero__media::after{background:rgba(0,0,0,.6)}}
+/* Téléphone : photo d’accueil en entier, au-dessus du texte */
+@media (max-width:960px){.hero{padding-top:0;justify-content:flex-start;min-height:0}.hero__grid{gap:1.4rem}.hero__media{position:relative;inset:auto;order:-1;width:100vw;margin-left:calc(50% - 50vw);aspect-ratio:16/10}.hero__media img{object-position:50% 50%}.hero__media::after{background:linear-gradient(to bottom,rgba(0,0,0,0) 55%,#000)}}
